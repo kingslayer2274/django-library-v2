@@ -1,3 +1,4 @@
+from adminn.models import Book
 from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from django.views import generic
@@ -39,3 +40,12 @@ def register(request):
     context = {"form": form}
     return render(request, "registration/register.html",context)
 
+def homepage(request):
+    books = Book.objects.all()
+    lst = []
+    for book in books:
+        lst.append(book)
+
+    lst.sort(key=lambda x: x.id)
+    context = {"books": lst}
+    return render(request,'registration/index.html',context)

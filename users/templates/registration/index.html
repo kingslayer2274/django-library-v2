@@ -1,0 +1,188 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">    <link rel="stylesheet" href="{%static 'home/css/styles.css' %}">
+    <link rel="stylesheet" href="{%static 'home/css/books-styles.css' %}">
+    <title>Document</title>
+<style>
+   .btn, .btn:link, .btn:visited {
+	 /* text-transform: uppercase; */
+	 text-decoration: none;
+	 padding: 1.5rem 4rem;
+	 display: inline-block;
+	 border-radius: 10rem;
+	 transition: all 0.2s;
+	 position: relative;
+	 font-size: 1.4rem;
+	 border: none;
+	 cursor: pointer;
+}
+ .btn:hover {
+	 transform: translateY(-3px);
+	 box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
+}
+ .btn:hover::after {
+	 transform: scaleX(1.4) scaleY(1.6);
+	 opacity: 0;
+}
+ .btn:active, .btn:focus {
+	 outline: none;
+	 transform: translateY(-1px);
+	 box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .2);
+}
+ .btn--white {
+	 background-color: #fff;
+	 color: #777;
+}
+ .btn--white::after {
+	 background-color: #fff;
+}
+ .btn--green {
+	 background-color: #55c57a;
+	 color: #fff;
+}
+ .btn--green::after {
+	 background-color: #55c57a;
+}
+ .btn::after {
+	 content: "";
+	 display: inline-block;
+	 height: 100%;
+	 width: 100%;
+	 border-radius: 10rem;
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 z-index: -1;
+	 transition: all 0.4s;
+}
+ .btn--animated {
+	 animation: moveInBottom 0.5s ease-out 0.75s;
+	 animation-fill-mode: backwards;
+}
+ .btn-text:link, .btn-text:visited {
+	 font-size: 1.6rem;
+	 color: #55c57a;
+	 display: inline-block;
+	 text-decoration: none;
+	 border-bottom: 1px solid #55c57a;
+	 padding: 3px;
+	 transition: all 0.2s;
+}
+ .btn-text:hover {
+	 background-color: #55c57a;
+	 color: #fff;
+	 box-shadow: 0 1rem 2rem rgba(0, 0, 0, .15);
+	 transform: translateY(-2px);
+}
+ .btn-text:active {
+	 box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+	 transform: translateY(0);
+}
+ 
+</style>
+
+</head>
+<body>
+
+
+
+
+
+
+
+    {% if books %}
+
+    
+    
+    
+    
+    
+    <section class="section-tours" style="overflow-x:hidden;margin-top: 10rem;" id="section-tours">
+        <div class="text-center">
+                <h1 class="" style="letter-spacing: 0.4rem; color: white;">
+                    Here are our books
+                </h1>
+
+                <div class="row " style="margin-top: 4rem;">
+                    <div class="col-6">
+                        <a href="{%url 'index' %}" class="users btn text-white" >Sign in to borrow</a>
+                    </div>
+                    <div class="col-6">
+                        <a href="{%url 'register' %}" class="users btn text-white">
+
+                            Register for new account...</a>
+                        </div>
+
+                                     </div>
+        </div>
+    
+        <div class="row" style="padding: 5rem;">
+            {% for book in books %}
+            <div class="col-4 mt-5">
+                <div class="card" style="background-color: transparent;">
+                    <div class="card__side card__side--front">
+                        <div class="card__picture card__picture--1">
+                            <!-- &nbsp; -->
+                            <img class="card__picture" src="{%static 'home/images/'|add:book.image %}" alt="">
+                        </div>
+                        <h4 class="card__heading">
+                            <span class="card__heading-span card__heading-span--1">{{ book.name }}</span>
+                        </h4>
+                        <div class="card__details">
+                            <ul>
+                                <li>
+                                    {% if book.is_borrowed %}
+                                    borrowed until {{book.return_date}} 
+                                    {% else %}
+                                    Not borrowed
+                                    {% endif %}
+                                </li>
+                                <li>
+                                    Author : {{book.authors }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card__side card__side--back card__side--back-1">
+                        <div class="card__cta">
+                            <h5>{{ book.description }}</h5>
+    
+                        </div>
+                        <div class="card__cta">
+    
+                            <!-- IF ADMIN  -->
+    
+                           
+                            <!-- END COMMENT -->
+                            <!-- <a href="#popup" class="btn btn--white">Borrow now!</a> -->
+    
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            {% endfor %}
+    
+    
+        </div>
+    
+    
+    </section>
+    {% else %}
+    <h1 class="h1">No Books to show</h1>
+    {% endif %}
+    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+    integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+    crossorigin="anonymous"></script>
+
+</body>
+</html>
