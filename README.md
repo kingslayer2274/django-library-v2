@@ -1,6 +1,6 @@
 # django-library-v2
 
-#To start using the app :
+# To start using the app :
 
 - Create new database and modify _DATABASES_ section in _settings_ file
 
