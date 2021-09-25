@@ -18,4 +18,4 @@
 
 
 *You may want to start here*
-## localhost:[port]/users/login  
+## localhost:[port]/users/home
