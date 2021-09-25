@@ -5,12 +5,12 @@
 {%block content%}
 
 
-<div class="container">
+<div class="container" style="margin-top: 4rem;">
     <h1> Edit Book </h1>
     <form action="{% url 'editbook' book.id %}" method="POST">
         {% csrf_token %}
 
-      <div class="form-group row">
+      <div class="form-group row mt-5">
         <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" value="{{book.name}}"
@@ -19,7 +19,7 @@
 
       </div>
 
-     <div class="form-group row">
+     <div class="form-group row mt-5">
         <label for="inputEmail3" class="col-sm-2 col-form-label">authors</label>
         <div class="col-sm-10">
           <input type="text" class="form-control"  value="{{book.authors}}"
@@ -27,7 +27,7 @@
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group row mt-5">
         <label for="inputEmail3" class="col-sm-2 col-form-label">description</label>
         <div class="col-sm-10">
           <input type="text" class="form-control"  value="{{book.description}}"
@@ -35,7 +35,7 @@
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group row mt-5">
         <label for="inputEmail3" class="col-sm-2 col-form-label">image</label>
         <div class="col-sm-10">
           <input type="text" class="form-control"  value="{{book.image}}"
@@ -45,7 +45,7 @@
 
     <div class="form-group">
 
-        <div class="form-group row">
+        <div class="form-group row mt-5">
             <div class="col-sm-10">
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
