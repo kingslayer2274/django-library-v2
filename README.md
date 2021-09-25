@@ -15,3 +15,7 @@
 - Python manage.py migrate
 
 - You can run the app now _ python manage.py runserver _
+
+
+*You may want to start here*
+## localhost:[port]/users/login  
